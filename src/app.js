@@ -6,6 +6,8 @@ const myConnection = require('express-myconnection');//para usar mysql
 
 const app = express(); //llamo express
 
+//Importnado las rutas 
+const misRutas = require('./routes/rutas');//guardo todas las rutas aqui
 
 //Configuracion
 app.set('port', process.env.PORT || 3000); //necesario despliegue en server real
@@ -18,10 +20,15 @@ app.use(myConnection(mysql, {
      host: 'localhost',
      user: 'root', //dato por defecto DB Mysql
      password: '',//El pass de tu BD
+     port: 3306,
      database: 'proyectomusica'
 }, 'single'));
 
 //Routes
+app.use('/', misRutas);//cunado el usuairo llegue al home ejecutamos estas rutas
+
+//archivos estaticos  (iamgens, frameworks, etc)
+app.use(express.static(path.join(__dirname, 'public')));
 
 //Arrancando el servidor
 app.listen(app.get('port'), () => {
