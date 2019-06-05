@@ -6,4 +6,8 @@ controlador.inicio = (req, res) => {
      res.render('index');//pinto la vista 'customers'  
 }
 
+controlador.buscar = (req, res) => {
+     res.render('resultado');//pinto la vista 'customers'  
+}
+
 module.exports = controlador;
