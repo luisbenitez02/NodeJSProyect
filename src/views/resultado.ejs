@@ -6,7 +6,7 @@
      <div class="container">
           <div class="row">
                <div class="section-title">
-                    <h1>Coincidencia Artistas</h1>
+                    <h1>Coincidencias de Artistas, Cancion O Letra</h1>
                </div>
                <!--Tabal que muestra los datos-->
                <table class="table table-border table-hover">
@@ -14,6 +14,8 @@
                          <tr>
                               <th>N°</th>
                               <th>Artista</th>
+                              <th>Canción</th>
+                              <th>Letra</th>
                          </tr>
                     </thead>
                     <tbody>
@@ -24,18 +26,19 @@
                               <td><%= i+1 %></td>
                               <td> <a href="<%= data[i].link %>">
                               <%= data[i].name_artistas %> </a></td>
+                              <td><%= data[i].name_canciones %></td>
+                              <td><%= data[i].letra %></td>
                          </tr>
+                         <%  } if(data.length < 1) {%>
+                              <div class="alert alert-warning" role="alert">
+                                  Sin coincidencias para artistas
+                              </div>
                          <%  } %>
-               
                          <%  } %>
                          <!--Asi le llame en customercontroler.js-->
                     </tbody>
                </table>
           </div>
-          <div class="row">
-               <div class="section-title">
-                    <h1>Coincidencia Canciones</h1>
-               </div>
           </div>
      </div>
 </div>
