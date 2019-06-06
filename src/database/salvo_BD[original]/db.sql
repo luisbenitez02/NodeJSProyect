@@ -92,7 +92,7 @@ CREATE TABLE canciones
 (
      cod_canciones INT(3) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
      name_canciones VARCHAR(40),
-     letra BLOB,
+     letra TEXT,
      cod_artistas INT(2) UNSIGNED,
      cod_coleccion INT(2) UNSIGNED,
      /*PREVIO_CANCION ORDSYS.ORDAUDIO,*/
