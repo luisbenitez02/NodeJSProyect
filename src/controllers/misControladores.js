@@ -9,12 +9,13 @@ controlador.inicio = (req, res) => {
 controlador.buscar = (req, res) => {
      const dato = req.query.dato;//obtengo dato que me entregaron URL
      //Solicito conexion a la BD
-     const consulta = "SELECT art.name_artistas, art.link, ca.name_canciones, ca.letra FROM artistas art INNER JOIN canciones ca ON art.cod_artistas = ca.cod_artistas WHERE art.name_artistas " + " LIKE '%" + dato + "%'" + "OR ca.name_canciones" + " LIKE '%" + dato + "%'" + " OR ca.letra" + " LIKE '%" + dato + "%'";
+     const title = "Coincidencias para nombre de artista o cancion";
+     const consulta = "SELECT art.name_artistas, art.link, ca.name_canciones, ca.letra FROM artistas art INNER JOIN canciones ca ON art.cod_artistas = ca.cod_artistas WHERE art.name_artistas " + " LIKE '%" + dato + "%'" + "OR ca.name_canciones" + " LIKE '%" + dato + "%'";/*+ " OR ca.letra" + " LIKE '%" + dato + "%'" */
 
      console.log(consulta);
      req.getConnection((err, conn) => {
           conn.query(consulta, (err, filas) => {
-               res.render('resultado', { data: filas });  
+               res.render('resultado', { data: filas, titulo: title });  
           });
  
      /*req.getConnection((err, conn) => {
@@ -22,6 +23,26 @@ controlador.buscar = (req, res) => {
                res.render('resultado', { data: filas });
           });*/
           
+     });
+}
+
+controlador.buscarSong = (req, res) => {
+     const dato = req.query.dato;//obtengo dato que me entregaron URL
+     //Solicito conexion a la BD
+     const title = "Coincidencias para letra de canción";
+     const consulta = "SELECT art.name_artistas, art.link, ca.name_canciones, ca.letra FROM artistas art INNER JOIN canciones ca ON art.cod_artistas = ca.cod_artistas WHERE ca.letra" + " LIKE '%" + dato + "%'";
+
+     console.log(consulta);
+     req.getConnection((err, conn) => {
+          conn.query(consulta, (err, filas) => {
+               res.render('resultado', { data: filas, titulo: title });
+          });
+
+          /*req.getConnection((err, conn) => {
+               conn.query("SELECT name_artistas, link FROM artistas WHERE name_artistas" + " LIKE '%" + dato + "%'",  (err, filas) => {    
+                    res.render('resultado', { data: filas });
+               });*/
+
      });
 }
 

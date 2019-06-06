@@ -5,8 +5,14 @@
 <div class="section section-white">
      <div class="container">
           <div class="row">
+               <h3>Nueva Busqueda</h3>
+               <% include partials/_buscar %>
+
+               <% include partials/_buscarSong %>
+          </div>
+          <div class="row">
                <div class="section-title">
-                    <h1>Coincidencias de Artistas, Cancion O Letra</h1>
+                    <h1><%= titulo %></h1>
                </div>
                <!--Tabal que muestra los datos-->
                <table class="table table-border table-hover">
