@@ -7,7 +7,16 @@ controlador.inicio = (req, res) => {
 }
 
 controlador.buscar = (req, res) => {
-     res.render('resultado');//pinto la vista 'customers'  
+     const dato = req.query.dato;//obtengo dato que me entregaron URL
+     //Solicito conexion a la BD
+     req.getConnection((err, conn) => {
+
+          conn.query("SELECT name_artistas, link FROM artistas WHERE name_artistas" + " LIKE '%" + dato + "%'",  (err, filas) => {
+               console.log(filas);
+               
+               res.render('resultado', { data: filas });
+          });
+     });
 }
 
 module.exports = controlador;

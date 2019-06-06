@@ -24,8 +24,12 @@ app.use(myConnection(mysql, {
      database: 'proyectomusica'
 }, 'single'));
 
+//-- esto es para usar el 
+app.use(express.urlencoded({ extended: false }));//requerimos el metodo urlencode para entender los datos que vengan desde el formulario.
+
 //Routes
 app.use('/', misRutas);//cunado el usuairo llegue al home ejecutamos estas rutas
+
 
 //archivos estaticos  (iamgens, frameworks, etc)
 app.use(express.static(path.join(__dirname, 'public')));

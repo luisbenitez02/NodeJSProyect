@@ -37,6 +37,7 @@ CREATE TABLE artistas
      name_artistas VARCHAR(30) NOT NULL,
      cod_genero INT(2) UNSIGNED,
      biografia BLOB,
+     link VARCHAR(30) NOT NULL,
      /*COD_IMAGEN INT,*/
      /*PRIMARY KEY(COD_ARTISTAS),*/
      CONSTRAINT fk_cod_genero FOREIGN KEY (cod_genero) REFERENCES genero(cod_genero)
@@ -44,15 +45,15 @@ CREATE TABLE artistas
 );
 
 /* insercion de artistas */
-INSERT INTO artistas(name_artistas,cod_genero)
-     VALUES('SURVIVOR', 1),
-          ('MICHAEL JACKSON', 2),
-          ('RAY CHARLES', 3),
-          ('FRANK SINATRA', 4),
-          ('TAME IMPALA', 1),
-          ('THE WEEKEND', 2),
-          ('LOUIS ARMSTRONG', 3),
-          ('LOUIS PRIMA', 4);
+INSERT INTO artistas(name_artistas,cod_genero,link)
+     VALUES('SURVIVOR', 1, '/Rock_Survivor.html'),
+          ('MICHAEL JACKSON', 2, '/Pop_MichaelJackson.html'),
+          ('RAY CHARLES', 3, '/Jazz_RayCharles.html'),
+          ('FRANK SINATRA', 4, '/Swing_Sinatra.html'),
+          ('TAME IMPALA', 1, '/Rock_TameImpala.html'),
+          ('THE WEEKEND', 2,'/Pop_Weeknd.html'),
+          ('LOUIS ARMSTRONG', 3, '/Jazz_Louis.html'),
+          ('LOUIS PRIMA', 4, '/Swing_Prima.html');
 
 
 CREATE TABLE coleccion
